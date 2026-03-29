@@ -19,3 +19,22 @@ console.log(10 !== "10");
 
 
 
+let age = 30;
+
+if (age >= 18 && age <= 60) {
+  console.log("Allowed");
+}
+
+
+
+let text = "JavaScript" + " is fun";
+console.log(text);
+
+let t = `JavaScript is fun`;
+console.log(t);
+
+
+let lang = "JavaScript";
+let y = `${lang} is fun`;
+
+console.log(y);
