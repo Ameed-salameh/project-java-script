@@ -22,3 +22,9 @@ console.log(name, age, country);
 
 
 
+console.log("5" + 5);
+
+
+
+console.log(10 + 20 + "30");
+
