@@ -1,3 +1,8 @@
+/*
+
+//Section 1: console.log & Comments
+
+
 console.log("Hello JavaScript World");
 
 
@@ -6,11 +11,7 @@ console.log("Hello JavaScript World");
 
 
 
-/*
-هذا كود بسيط
-يقوم بطباعة رسالة
-في الـ console
-*/
+
 console.log("Hello JavaScript World");
 
 
@@ -28,3 +29,28 @@ console.log("5" + 5);
 
 console.log(10 + 20 + "30");
 
+
+*/
+
+//Section 2: var, let, const
+
+
+
+
+
+
+var x = 5;
+var x = 10;
+
+console.log(x);
+
+
+
+let y = 5;
+ y= 10;
+
+console.log(x);
+
+
+
+const PI = 3.14;
