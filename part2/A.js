@@ -123,3 +123,89 @@ document.addEventListener("keydown", function(e) {
 
 
 
+
+
+// 27
+console.log(document.querySelector("button").parentElement);
+
+// 28
+console.log(document.querySelector("ul").children);
+
+// 29
+document.querySelector("li").addEventListener("click", function() {
+  console.log(this.nextElementSibling);
+});
+
+// 30
+console.log(document.querySelector("p").previousElementSibling);
+
+// 31
+document.querySelectorAll("li").forEach(li => {
+  li.addEventListener("click", function() {
+    console.log(this.parentElement);
+    console.log(this.parentElement.children);
+  });
+});
+
+// 32
+let child = document.querySelector("span");
+while (child.parentElement) {
+  child = child.parentElement;
+}
+console.log(child); 
+
+
+
+// 33
+let li = document.createElement("li");
+li.textContent = "New Item";
+document.querySelector("ul").appendChild(li);
+
+// 34
+let newBtn = document.createElement("button");
+newBtn.textContent = "Click me";
+newBtn.addEventListener("click", () => alert("Hi"));
+document.body.appendChild(newBtn);
+
+// 35
+let div = document.createElement("div");
+let h = document.createElement("h3");
+let p = document.createElement("p");
+
+h.textContent = "Title";
+p.textContent = "Paragraph";
+
+div.appendChild(h);
+div.appendChild(p);
+document.body.appendChild(div);
+
+// 36
+let input2 = document.createElement("input");
+let ref = document.querySelector("button");
+ref.parentElement.insertBefore(input2, ref);
+
+// 37
+let el2 = document.createElement("div");
+el2.textContent = "First";
+document.body.prepend(el2);
+
+// 38
+let note = document.createElement("div");
+note.textContent = "Notification";
+document.body.appendChild(note);
+
+setTimeout(() => note.remove(), 3000);
+
+// 39
+let card = document.createElement("div");
+card.innerHTML = `
+  <img src="img.jpg" width="100">
+  <h3>Title</h3>
+  <p>Description</p>
+  <button>Buy</button>
+`;
+document.body.appendChild(card);
+
+// 40
+let clone = document.querySelector(".box").cloneNode(true);
+document.body.appendChild(clone);
