@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>بطاقة مستخدم + آلة حاسبة ذكية</title>
+  <title>Tip & Tax Calculator + Discount Rules</title>
   <style>
     :root {
       --bg: #f5f5f5;
@@ -31,10 +31,10 @@
     }
 
     .app {
-      width: min(820px, 100%);
+      width: min(760px, 100%);
       background: var(--card);
-      border-radius: 8px;
       border: 1px solid var(--border);
+      border-radius: 8px;
     }
 
     .header {
@@ -45,25 +45,19 @@
 
     .header h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
     }
 
     .header p {
       margin: 8px 0 0;
-      line-height: 1.6;
       color: var(--muted);
+      line-height: 1.6;
     }
 
     .content {
       padding: 20px;
       display: grid;
       gap: 16px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
     }
 
     .field {
@@ -94,13 +88,16 @@
       flex-wrap: wrap;
     }
 
-    button {
+    button,
+    .link-btn {
       border: 1px solid transparent;
       border-radius: 6px;
       padding: 11px 14px;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .primary {
@@ -125,60 +122,53 @@
 
     .muted {
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
     .error {
       color: var(--danger);
       font-weight: 700;
     }
-
-    @media (max-width: 680px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
   <main class="app">
     <section class="header">
-      <h1>مشروع JavaScript: بطاقة مستخدم + آلة حاسبة ذكية</h1>
-      <p>يغطي: console.log، التعليقات، var/let/const، أنواع البيانات، المعاملات المختلفة، ودمج السلاسل النصية.</p>
+      <h1>المشروع الثالث: Tip & Tax Calculator + Discount Rules</h1>
+      <p>آلة حساب فاتورة المطعم: ضريبة + إكرامية + خصم VIP/STUDENT مع شروط منطقية ومقارنات.</p>
     </section>
 
     <section class="content">
-      <div class="grid">
-        <div class="field">
-          <label for="nameInput">الاسم</label>
-          <input id="nameInput" type="text" placeholder="اكتب اسمك" />
-        </div>
-        <div class="field">
-          <label for="ageInput">العمر</label>
-          <input id="ageInput" type="number" placeholder="اكتب عمرك" />
-        </div>
-        <div class="field">
-          <label for="num1Input">الرقم الأول</label>
-          <input id="num1Input" type="number" placeholder="مثال: 10" />
-        </div>
-        <div class="field">
-          <label for="num2Input">الرقم الثاني</label>
-          <input id="num2Input" type="number" placeholder="مثال: 4" />
-        </div>
+      <div class="field">
+        <label for="billInput">قيمة الفاتورة</label>
+        <input id="billInput" type="number" placeholder="مثال: 120.50" />
+      </div>
+
+      <div class="field">
+        <label for="taxInput">نسبة الضريبة (%)</label>
+        <input id="taxInput" type="number" placeholder="مثال: 16" />
+      </div>
+
+      <div class="field">
+        <label for="tipInput">نسبة الإكرامية (%)</label>
+        <input id="tipInput" type="number" placeholder="مثال: 10" />
+      </div>
+
+      <div class="field">
+        <label for="codeInput">كود الخصم (اختياري)</label>
+        <input id="codeInput" type="text" placeholder="VIP أو STUDENT" />
       </div>
 
       <div class="buttons">
-        <button id="createCardBtn" class="primary">إنشاء بطاقة ترحيب</button>
-        <button id="typesBtn" class="secondary">تسجيل أنواع البيانات في Console</button>
-        <a class="secondary" href="temperature.html">المشروع الثاني: Temperature Converter</a>
-       <a class="link-btn secondary" href="tip-tax.html">رجوع للمشروع الثالث</a>
-
+        <button id="calcBtn" class="primary">احسب الفاتورة</button>
+        <button id="typesBtn" class="secondary">تسجيل الأنواع في Console</button>
+        <a class="link-btn secondary" href="index.html">المشروع الأول</a>
+        <a class="link-btn secondary" href="temperature.html">المشروع الثاني</a>
       </div>
 
-      <div id="result" class="panel muted">النتائج ستظهر هنا.</div>
+      <div id="out" class="panel muted">النتائج ستظهر هنا.</div>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="tip-tax.js"></script>
 </body>
 </html>

@@ -10,7 +10,6 @@ const typesBtn = document.getElementById("typesBtn");
 const result = document.getElementById("result");
 
 function readInputs() {
-  // var: للتوضيح التعليمي فقط (يفضل استخدام let/const في المشاريع الحديثة)
   var userName = nameInput.value.trim();
 
   // Number() لتحويل النص إلى رقم

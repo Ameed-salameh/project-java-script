@@ -7,7 +7,6 @@ const logBtn = document.getElementById("logBtn");
 const result = document.getElementById("result");
 
 function parseTemperature() {
-  // var موجود هنا للتوضيح التعليمي
   var rawValue = tempInput.value.trim();
   const unit = unitSelect.value;
   const parsed = Number(rawValue);
@@ -52,7 +51,6 @@ function convertTemperature() {
     return;
   }
 
-  // عمليات حسابية للتحويل
   const toFahrenheit = (tempValue * 9) / 5 + 32;
   const toCelsius = ((tempValue - 32) * 5) / 9;
 
@@ -67,22 +65,18 @@ function convertTemperature() {
     outputUnit = "C";
   }
 
-  // معاملات الإسناد
   let checks = 0;
   checks += 1;
   checks += 1;
 
-  // معاملات المقارنة
   const isFreezingC = inputUnit === "C" && tempValue <= 0;
   const isBoilingC = inputUnit === "C" && tempValue >= 100;
   const isHotInF = inputUnit === "F" && tempValue > 86;
   const equalsBodyTempApprox = converted >= 36.5 && converted <= 37.5;
 
-  // معاملات منطقية
   const extreme = isBoilingC || isHotInF;
   const normalRange = !extreme && tempValue > -50;
 
-  // معاملات السلاسل النصية
   const title = "نتيجة التحويل";
   const line1 = "القيمة المدخلة: " + tempValue + "°" + inputUnit;
   const line2 = "القيمة المحوّلة: " + converted.toFixed(2) + "°" + outputUnit;
