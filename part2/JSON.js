@@ -53,4 +53,159 @@ tasks.forEach(t => {
 document.body.appendChild(ul);
 
 
+// 11
+let user = {name:"Mona", age:28};
+let json11 = JSON.stringify(user);
+console.log(json11);
 
+// 12
+let obj12 = {skills:["HTML","CSS","JS"]};
+let json12 = JSON.stringify(obj12);
+localStorage.setItem("skills", json12);
+
+// 13
+let settings = {theme:"dark", lang:"en"};
+localStorage.setItem("settings", JSON.stringify(settings));
+
+// 14 (تجاهل password)
+let obj14 = {username:"admin", password:"1234"};
+let json14 = JSON.stringify(obj14, (key, value) => {
+  if (key === "password") return undefined;
+  return value;
+});
+console.log(json14);
+
+// 15 (تواريخ)
+let obj15 = {date: new Date()};
+console.log(JSON.stringify(obj15));
+
+// 16 (دالة)
+let obj16 = {name:"Test", action:function(){return 5;}};
+console.log(JSON.stringify(obj16));
+// الدالة يتم تجاهلها ❗
+
+// 17 (تنسيق)
+let obj17 = {name:"Ali", age:22};
+console.log(JSON.stringify(obj17, null, 2));
+
+// 18
+let bill = {items:["a","b","c"]};
+let json18 = JSON.stringify(bill);
+console.log(json18.length);
+
+// 19
+let user19 = {name:"Ali", tasks:["task1","task2"]};
+let json19 = JSON.stringify(user19);
+console.log(json19);
+
+// 20
+let big = {data:[1,2,3]};
+let str = JSON.stringify(big);
+let back = JSON.parse(str);
+document.body.textContent = JSON.stringify(back);
+
+
+
+
+
+
+
+// 21
+fetch("https://jsonplaceholder.typicode.com/users")
+.then(res => res.json())
+.then(data => data.forEach(u => console.log(u.name)));
+
+// 22
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+.then(res => res.json())
+.then(data => {
+  let h2 = document.createElement("h2");
+  h2.textContent = data.title;
+  document.body.appendChild(h2);
+});
+
+// 23
+fetch("https://jsonplaceholder.typicode.com/todos")
+.then(res => res.json())
+.then(data => {
+  let done = data.filter(t => t.completed);
+  console.log(done);
+});
+
+// 24
+fetch("https://jsonplaceholder.typicode.com/photos")
+.then(res => res.json())
+.then(data => {
+  let img = document.createElement("img");
+  img.src = data[0].url;
+  document.body.appendChild(img);
+});
+
+// 25 (POST)
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body: JSON.stringify({title:"Test"})
+});
+
+// 26
+fetch("https://jsonplaceholder.typicode.com/users/1")
+.then(res => res.json())
+.then(user => {
+  let card = document.createElement("div");
+  card.innerHTML = `<h3>${user.name}</h3><p>${user.email}</p>`;
+  document.body.appendChild(card);
+});
+
+// 27
+fetch("https://jsonplaceholder.typicode.com/comments?_limit=5")
+.then(res => res.json())
+.then(data => console.log(data));
+
+// 28
+document.querySelector("button").onclick = () => {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then(res => res.json())
+  .then(data => {
+    let pre = document.createElement("pre");
+    pre.textContent = JSON.stringify(data, null, 2);
+    document.body.appendChild(pre);
+  });
+};
+
+// 29
+let obj29 = {a:1,b:2};
+document.body.innerHTML = `<pre>${JSON.stringify(obj29,null,2)}</pre>`;
+
+// 30
+let products30 = [
+  {name:"A", price:10},
+  {name:"B", price:20}
+];
+
+let table = document.createElement("table");
+products30.forEach(p => {
+  let tr = document.createElement("tr");
+  tr.innerHTML = `<td>${p.name}</td><td>${p.price}</td>`;
+  table.appendChild(tr);
+});
+document.body.appendChild(table);
+
+// 31 (try/catch)
+async function getData() {
+  try {
+    let res = await fetch("bad-url");
+    let data = await res.json();
+    console.log(data);
+  } catch (e) {
+    console.log("Error!");
+  }
+}
+
+// 32 (search)
+fetch("https://jsonplaceholder.typicode.com/users")
+.then(res => res.json())
+.then(data => {
+  let result = data.filter(u => u.name.includes("Leanne"));
+  console.log(result);
+});
