@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>بطاقة مستخدم + آلة حاسبة ذكية</title>
+  <title>Temperature Converter + Input Guard</title>
   <style>
     :root {
       --bg: #f5f5f5;
@@ -31,10 +31,10 @@
     }
 
     .app {
-      width: min(820px, 100%);
+      width: min(760px, 100%);
       background: var(--card);
-      border-radius: 8px;
       border: 1px solid var(--border);
+      border-radius: 8px;
     }
 
     .header {
@@ -45,13 +45,13 @@
 
     .header h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
 
     .header p {
       margin: 8px 0 0;
-      line-height: 1.6;
       color: var(--muted);
+      line-height: 1.6;
     }
 
     .content {
@@ -60,22 +60,23 @@
       gap: 16px;
     }
 
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
-    .field {
-      display: grid;
-      gap: 6px;
-    }
-
     label {
       font-weight: 700;
     }
 
-    input {
+    input,
+    select {
       padding: 10px 12px;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -84,7 +85,8 @@
       background: #fff;
     }
 
-    input:focus {
+    input:focus,
+    select:focus {
       border-color: var(--primary);
     }
 
@@ -94,13 +96,16 @@
       flex-wrap: wrap;
     }
 
-    button {
+    button,
+    .link-btn {
       border: 1px solid transparent;
       border-radius: 6px;
       padding: 11px 14px;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .primary {
@@ -125,7 +130,6 @@
 
     .muted {
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
     .error {
@@ -143,40 +147,36 @@
 <body>
   <main class="app">
     <section class="header">
-      <h1>مشروع JavaScript: بطاقة مستخدم + آلة حاسبة ذكية</h1>
-      <p>يغطي: console.log، التعليقات، var/let/const، أنواع البيانات، المعاملات المختلفة، ودمج السلاسل النصية.</p>
+      <h1>المشروع الثاني: Temperature Converter + Input Guard</h1>
+      <p>تحويل بين Celsius و Fahrenheit مع التحقق من الإدخال وإظهار العمليات والأنواع في Console.</p>
     </section>
 
     <section class="content">
       <div class="grid">
         <div class="field">
-          <label for="nameInput">الاسم</label>
-          <input id="nameInput" type="text" placeholder="اكتب اسمك" />
+          <label for="tempInput">درجة الحرارة</label>
+          <input id="tempInput" type="text" placeholder="مثال: 37 أو 98.6" />
         </div>
+
         <div class="field">
-          <label for="ageInput">العمر</label>
-          <input id="ageInput" type="number" placeholder="اكتب عمرك" />
-        </div>
-        <div class="field">
-          <label for="num1Input">الرقم الأول</label>
-          <input id="num1Input" type="number" placeholder="مثال: 10" />
-        </div>
-        <div class="field">
-          <label for="num2Input">الرقم الثاني</label>
-          <input id="num2Input" type="number" placeholder="مثال: 4" />
+          <label for="unitSelect">نوع الدرجة المدخلة</label>
+          <select id="unitSelect">
+            <option value="C">Celsius (C)</option>
+            <option value="F">Fahrenheit (F)</option>
+          </select>
         </div>
       </div>
 
       <div class="buttons">
-        <button id="createCardBtn" class="primary">إنشاء بطاقة ترحيب</button>
-        <button id="typesBtn" class="secondary">تسجيل أنواع البيانات في Console</button>
-        <a class="secondary" href="temperature.html">المشروع الثاني: Temperature Converter</a>
+        <button id="convertBtn" class="primary">تحويل</button>
+        <button id="logBtn" class="secondary">تسجيل نوع البيانات في Console</button>
+        <a class="link-btn secondary" href="index.html">رجوع للمشروع الأول</a>
       </div>
 
-      <div id="result" class="panel muted">النتائج ستظهر هنا.</div>
+      <div id="result" class="panel muted">النتيجة ستظهر هنا.</div>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="temperature.js"></script>
 </body>
 </html>
